@@ -1,10 +1,4 @@
-#include "lectureEnTeteSection.h"
-
-
-/* 
-TODO 
-
-*/
+#include "projet.h"
 
 void recupTabsection(FILE* f, Elf32_Ehdr header_elf, Elf32_Shdr *t) 
 {
