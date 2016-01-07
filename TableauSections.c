@@ -1,5 +1,9 @@
 #include "projet.h"
 
+/* 
+TODO : ERREUR SUR LES AFFICHAGES !
+*/
+
 void recupTabsection(FILE* f, Elf32_Ehdr header_elf, Elf32_Shdr *t) 
 {
 
@@ -14,6 +18,9 @@ void recupTabsection(FILE* f, Elf32_Ehdr header_elf, Elf32_Shdr *t)
 		{
 			fread(&section_elf.sh_name, sizeof(uint32_t), 1, f);
 			fread(&section_elf.sh_type, sizeof(uint32_t), 1, f);
+			if(section_elf.sh_type == SHT_SYMTAB){
+				getTableauSymboles(f, header_elf, section_elf);
+			}
 			fread(&section_elf.sh_flags, sizeof(uint32_t), 1, f);
 			fread(&section_elf.sh_addr, sizeof(uint32_t), 1, f);
 			fread(&section_elf.sh_offset, sizeof(uint32_t), 1, f);
@@ -153,12 +160,9 @@ void affichageTabsection(Elf32_Shdr *section_elf, Elf32_Ehdr header_elf){
 			printf(" ");
 			break;
 
-	printf("\n");
-
 	}
 	printf("\n");
 
-	
 	
 	printf("Adresse à laquelle le premier octet de la section doit se trouver : %d\n", section_elf[i].sh_addr);
 	printf("Décalage du premier octet de la section par rapport au début du fichier : %d\n", section_elf[i].sh_offset);
