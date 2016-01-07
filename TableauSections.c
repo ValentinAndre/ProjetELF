@@ -75,6 +75,9 @@ void affichageTabsection(Elf32_Shdr *section_elf, Elf32_Ehdr header_elf){
 	int i;
 	for(i=0; i<header_elf.e_shnum; i++)
 	{	
+
+	printf("\n __ SECTION %d __ \n", i +1);
+	
 	
 	printf("Nom de la section : %d\n", section_elf[i].sh_name);
 
@@ -87,10 +90,10 @@ void affichageTabsection(Elf32_Shdr *section_elf, Elf32_Ehdr header_elf){
 			printf("informations définies par le programme");
 			break;
 		case SHT_SYMTAB :
-			printf("table de symboles");
+			printf("tableau de symboles");
 			break;
 		case SHT_STRTAB :
-			printf("table de chaînes");
+			printf("tableau de chaînes");
 			break;
 		case SHT_RELA :
 			printf("entrées de repositionnement");
@@ -135,9 +138,11 @@ void affichageTabsection(Elf32_Shdr *section_elf, Elf32_Ehdr header_elf){
 	}
 	printf("\n");
 	
+
 	// MARCHE PAS LOL
 	printf("Drapeaux binaires de la section: ");
 	switch(section_elf[i].sh_flags){
+
 		case SHF_WRITE :
 			printf("données modifiables durant l'exécution");
 			break;
@@ -151,15 +156,18 @@ void affichageTabsection(Elf32_Shdr *section_elf, Elf32_Ehdr header_elf){
 			printf("bits réservés à des sémantiques spécifiques au processeur");
 			break;
 		default :
-			printf("Erreur");
+			printf(" ");
 			break;
+
+	printf("\n");
 
 	}
 	printf("\n");
+
 	
-	// DOUBLE ADDR
+	
 	printf("Adresse à laquelle le premier octet de la section doit se trouver : %d\n", section_elf[i].sh_addr);
-	printf("Décalage du premier octet de la section par rapport au début du fichier : %d\n", section_elf[i].sh_addr);
+	printf("Décalage du premier octet de la section par rapport au début du fichier : %d\n", section_elf[i].sh_offset);
 	
 	printf("Taille de la section en octets : %d\n", section_elf[i].sh_size);
 	
@@ -171,6 +179,8 @@ void affichageTabsection(Elf32_Shdr *section_elf, Elf32_Ehdr header_elf){
 	
 	// Suivant a check
 	printf("Table contenant un nombre d'entrées fixe : %d\n", section_elf[i].sh_entsize);
+
+
 	
 	}
 
