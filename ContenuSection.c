@@ -1,4 +1,4 @@
-#include "lectureEnTeteSection.h"
+#include "projet.h"
 
 void affichageContenuSection(Elf32_Shdr* tabEnTeteSection, int numberSection, FILE* elf){
 	int i;
