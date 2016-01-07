@@ -38,6 +38,9 @@ void recupTabsection(FILE* f, Elf32_Ehdr header_elf, Elf32_Shdr *t)
 			section_elf.sh_name = __bswap_32(section_elf.sh_name);
 			fread(&section_elf.sh_type, sizeof(uint32_t), 1, f);
 			section_elf.sh_type = __bswap_32(section_elf.sh_type);
+			if(section_elf.sh_type == SHT_SYMTAB){
+				getTableauSymboles(f, header_elf, section_elf);
+			}
 			fread(&section_elf.sh_flags, sizeof(uint32_t), 1, f);
 			section_elf.sh_flags = __bswap_32(section_elf.sh_flags);
 			fread(&section_elf.sh_addr, sizeof(uint32_t), 1, f);
