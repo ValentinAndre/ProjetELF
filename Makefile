@@ -7,8 +7,8 @@ main: main.o lectureEnTete.o affichageSections.o lectureEnTete.o affichageConten
 %.o: %.c
 	$(CC) $(CFLAGS) $<
 
-lectureEnTete.o:lectureEnTeteSection.h
-affichageSections.o:lectureEnTeteSection.h
-affichageContenuSection.o:lectureEnTeteSection.h
+lectureEnTete.o:projet.h
+affichageSections.o:projet.h
+affichageContenuSection.o:projet.h
 
-main.o: lectureEnTeteSection.h
+main.o:projet.h
