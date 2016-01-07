@@ -1,14 +1,15 @@
 CC=gcc
 CFLAGS= -g -Wall -Werror -c
 
-main: main.o lectureEnTete.o affichageSections.o lectureEnTete.o affichageContenuSection.o
+main: main.o  Header.o TableauSections.o ContenuSection.o TableauSymboles.o
 	$(CC) -g -o $@ $^ -lm
 	
 %.o: %.c
 	$(CC) $(CFLAGS) $<
 
-lectureEnTete.o:projet.h
-affichageSections.o:projet.h
-affichageContenuSection.o:projet.h
+Header.o:projet.h
+TableauSections.o:projet.h
+ContenuSection.o:projet.h
+TableauSymboles.o:projet.h
 
 main.o:projet.h
