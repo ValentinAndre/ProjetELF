@@ -1,10 +1,4 @@
-#include "lectureEnTeteSection.h"
-
-/* 
-TODO 
-
-
-*/
+#include "projet.h"
 
 void getTableauSymboles(FILE* f, Elf32_Ehdr header_elf, Elf32_Shdr section_elf) 
 {
