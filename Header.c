@@ -1,4 +1,4 @@
-#include "lectureEnTeteSection.h"
+#include "projet.h"
 
 
 Elf32_Ehdr recupEnTete(FILE* f){
